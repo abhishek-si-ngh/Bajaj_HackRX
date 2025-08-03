@@ -1,0 +1,76 @@
+
+==============================
+🚀 HackRx 6.0 – Local Testing Guide
+==============================
+
+This guide walks you through running and testing your HackRx Policy-Aware Submission locally.
+
+------------------------------
+📁 1. Setup Environment
+------------------------------
+
+# Step 1: Create a virtual environment (optional but recommended)
+python -m venv venv
+# Activate it
+# Windows:
+venv\Scripts\activate
+# Linux/macOS:
+source venv/bin/activate
+
+# Step 2: Install dependencies
+pip install -r requirements.txt
+
+------------------------------
+▶️ 2. Run the API
+------------------------------
+
+# Run the FastAPI app (auto reload during dev)
+uvicorn hackrx_policy_aware_final:app --reload
+
+# It will be available at:
+http://localhost:8000
+
+# Swagger UI (for testing):
+http://localhost:8000/docs
+
+------------------------------
+🛠️ 3. Sample POST Request (via Postman or curl)
+------------------------------
+
+Endpoint:
+POST http://localhost:8000/hackrx/run
+
+Authorization Header:
+Authorization: Bearer 71bb650c7118766ab68c3df4923475c4cddb449b7332aa8cefb2d48aa3554e4b
+
+Request Body (JSON):
+{
+  "documents": "https://hackrx.blob.core.windows.net/assets/Arogya%20Sanjeevani%20Policy%20-%20CIN%20-%20U10200WB1906GOI001713%201.pdf?sv=2023-01-03&st=2025-07-21T08%3A29%3A02Z&se=2025-09-22T08%3A29%3A00Z&sr=b&sp=r&sig=nzrz1K9Iurt%2BBXom%2FB%2BMPTFMFP3PRnIvEsipAX10Ig4%3D",
+  "questions": [
+    "What is the waiting period for cataract surgery?",
+    "Does the policy cover AYUSH treatments?",
+    "What is the No Claim Discount benefit?"
+  ]
+}
+
+------------------------------
+✅ 4. Expected Response Format
+------------------------------
+
+{
+  "answers": [
+    "A waiting period of 24 months will apply to the treatment of Cataract.",
+    "Yes, expenses incurred for inpatient care treatment under AYUSH systems are covered.",
+    "This policy does not mention any No Claim Discount benefit."
+  ]
+}
+
+------------------------------
+📌 Notes
+------------------------------
+- Uses built-in policy detection
+- Ensures contextually correct answers
+- Responds in under 30 seconds
+- Works with Arogya, Mediclaim, or any IRDAI-compliant policy
+
+Happy hacking! 💻🔥
