@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3
 """
 HackRx 6.0 - Final Robust API for Hackathon Submission
@@ -20,6 +19,7 @@ from datetime import datetime
 from fastapi import FastAPI, HTTPException, Depends, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from fastapi.responses import RedirectResponse
 from pydantic import BaseModel, field_validator
 
 # Configure logging
@@ -160,6 +160,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.get("/")
+async def root():
+    return RedirectResponse(url="/docs")
 
 @app.get("/health")
 async def health_check():
