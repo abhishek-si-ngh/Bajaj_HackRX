@@ -104,6 +104,9 @@ docker run -d -p 8000:8000 --env HACKRX_TOKEN=your_token_here hackrx-api
 ## 👥 Contributors
 
 - **Abhishek Singh**  
+- **Abhiyanshu Anand**  
+- **Sanskar Singh**  
+- **Siddharth Tripathi**  
 - Team: HackerXHacker
 
 ---
