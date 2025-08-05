@@ -1,8 +1,9 @@
 fastapi
 uvicorn
-pdfplumber
-python-dotenv
-httpx
-sentence-transformers
-scikit-learn
 pydantic
+python-multipart
+requests
+PyPDF2
+langchain
+sentence-transformers
+faiss-cpu
