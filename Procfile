@@ -1,0 +1,1 @@
+web: uvicorn hackrx_final_robust_api_upgraded:app --host=0.0.0.0 --port=8000
